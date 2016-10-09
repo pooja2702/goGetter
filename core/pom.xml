@@ -10,14 +10,6 @@
 	</parent>
 	<artifactId>core</artifactId>
 	<name>core</name>
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<springframework.version>4.2.3.RELEASE</springframework.version>
-		<jdk.version>1.8</jdk.version>
-		<hibernate.version>4.3.6.Final</hibernate.version>
-		<mysql.connector.version>5.1.31</mysql.connector.version>
-		<joda-time.version>2.3</joda-time.version>
-	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -60,7 +52,9 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
 				<configuration>
 					<source>${jdk.version}</source>
 					<target>${jdk.version}</target>
