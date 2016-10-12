@@ -21,7 +21,7 @@ public class Field {
 	}
 
 	public String getDbColumn() {
-		return dbColumn.toUpperCase();
+		return dbColumn;
 	}
 
 	public String getIdentifier() {
@@ -29,7 +29,7 @@ public class Field {
 	}
 
 	public String getTableName() {
-		return tableName.toUpperCase();
+		return tableName;
 	}
 
 	public ColumnType getDataType() {

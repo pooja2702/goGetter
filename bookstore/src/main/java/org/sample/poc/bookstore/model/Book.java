@@ -4,7 +4,7 @@ import org.tat.api.core.meta.Column;
 import org.tat.api.core.meta.Id;
 import org.tat.api.core.meta.Table;
 
-@Table(name="BOOKS")
+@Table(name="books")
 public class Book {
 	@Column(dbColumn="B_ID")
 	@Id

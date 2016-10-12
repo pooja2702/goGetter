@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @JsonAutoDetect
-@Table(name="ORDERS")
+@Table(name="orders")
 public class Order {
 	
 	@Column(dbColumn = "O_ID")
