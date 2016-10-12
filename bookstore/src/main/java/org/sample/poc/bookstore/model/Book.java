@@ -1,21 +1,21 @@
 package org.sample.poc.bookstore.model;
 
-import org.tat.api.core.meta.Field;
+import org.tat.api.core.meta.Column;
 import org.tat.api.core.meta.Id;
 import org.tat.api.core.meta.Table;
 
 @Table(name="BOOKS")
 public class Book {
-	@Field(dbColumn="B_ID")
+	@Column(dbColumn="B_ID")
 	@Id
 	private String id;
-	@Field(dbColumn="B_NAME")
+	@Column(dbColumn="B_NAME")
 	private String name;
-	@Field(dbColumn="B_AUTHOR")
+	@Column(dbColumn="B_AUTHOR")
 	private String author;
-	@Field(dbColumn="B_GENRE")
+	@Column(dbColumn="B_GENRE")
 	private String genre;
-	@Field(dbColumn="B_PRICE")
+	@Column(dbColumn="B_PRICE")
 	private Long price;
 	
 	public String getId() {

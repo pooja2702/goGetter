@@ -3,7 +3,7 @@ package org.sample.poc.bookstore.model;
 
 import java.sql.Timestamp;
 
-import org.tat.api.core.meta.Field;
+import org.tat.api.core.meta.Column;
 import org.tat.api.core.meta.Id;
 import org.tat.api.core.meta.Table;
 
@@ -14,16 +14,16 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Table(name="ORDERS")
 public class Order {
 	
-	@Field(dbColumn = "O_ID")
+	@Column(dbColumn = "O_ID")
 	@Id
 	private String orderId;
 	
-	@Field(dbColumn="O_PLACED_DATE")
+	@Column(dbColumn="O_PLACED_DATE")
 	@JsonFormat
     (shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
 	private Timestamp placedDate;
 	
-	@Field(dbColumn="O_BOOK_COUNT")
+	@Column(dbColumn="O_BOOK_COUNT")
 	private Integer noOfBooks;
 	
 	public String getOrderId() {

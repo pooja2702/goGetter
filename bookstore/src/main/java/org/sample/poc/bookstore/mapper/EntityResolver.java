@@ -27,7 +27,7 @@ public class EntityResolver {
 				}
 			}
 			lookupMap =  new HashMap<>();
-			org.tat.api.core.meta.Field column = idField.getAnnotation(org.tat.api.core.meta.Field.class);
+			org.tat.api.core.meta.Column column = idField.getAnnotation(org.tat.api.core.meta.Column.class);
 			lookupMap.put("column", getColumnName(tableName, column));
 			lookupMap.put("value", idField.getType().cast(lookupKey));
 		}
@@ -46,8 +46,8 @@ public class EntityResolver {
 					E instance = (E)entityClass.newInstance();
 					Field[] fields = entityClass.getDeclaredFields();
 					for(Field field:fields){
-						if(field.isAnnotationPresent(org.tat.api.core.meta.Field.class)){
-							org.tat.api.core.meta.Field column = field.getAnnotation(org.tat.api.core.meta.Field.class);
+						if(field.isAnnotationPresent(org.tat.api.core.meta.Column.class)){
+							org.tat.api.core.meta.Column column = field.getAnnotation(org.tat.api.core.meta.Column.class);
 							String columnName = getColumnAlias(tableName,column);
 							if(entityMap.containsKey(columnName)){
 								Object value = entityMap.get(columnName);
@@ -74,13 +74,13 @@ public class EntityResolver {
 		return outputList;
 	}
 
-	private static String getColumnAlias(String tableName, org.tat.api.core.meta.Field column) {
+	private static String getColumnAlias(String tableName, org.tat.api.core.meta.Column column) {
 		StringBuffer sb = new StringBuffer(tableName);
 		sb.append("_").append(column.dbColumn());
 		return sb.toString();
 	}
 	
-	private static String getColumnName(String tableName, org.tat.api.core.meta.Field column) {
+	private static String getColumnName(String tableName, org.tat.api.core.meta.Column column) {
 		StringBuffer sb = new StringBuffer(tableName);
 		sb.append(".").append(column.dbColumn());
 		return sb.toString();

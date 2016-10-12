@@ -90,8 +90,8 @@ public class DataAccessFieldCallback implements FieldCallback{
                 		tableName = paramClass.getSimpleName().toUpperCase();
                 	Field[] fields = paramClass.getDeclaredFields();
                 	for(Field f : fields){
-                		if (f.isAnnotationPresent(org.tat.api.core.meta.Field.class)) {
-                			org.tat.api.core.meta.Field memberField = f.getAnnotation(org.tat.api.core.meta.Field.class);
+                		if (f.isAnnotationPresent(org.tat.api.core.meta.Column.class)) {
+                			org.tat.api.core.meta.Column memberField = f.getAnnotation(org.tat.api.core.meta.Column.class);
                 			logger.debug("::dbColumnName:: "+ memberField.dbColumn());
                 			fieldMap.put(f.getName(), new org.tat.api.core.sql.Field(memberField.dbColumn(), f.getName(), ColumnType.getColumnTypeForType(f.getType().getSimpleName().toLowerCase()), tableName));
                 		}
