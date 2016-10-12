@@ -41,7 +41,7 @@ public class EntityResolver {
 				Table table = entityClass.getAnnotation(Table.class);
 				String tableName = table.name();
 				if(tableName==null || tableName.isEmpty())
-            		tableName = entityClass.getSimpleName().toUpperCase();
+            		tableName = entityClass.getSimpleName();
 				try {
 					E instance = (E)entityClass.newInstance();
 					Field[] fields = entityClass.getDeclaredFields();
