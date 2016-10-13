@@ -87,7 +87,7 @@ public class DataAccessFieldCallback implements FieldCallback{
                 	String tableName= table.name();
                 	logger.debug("::Table Name:: "+tableName);
                 	if(tableName==null || tableName.isEmpty())
-                		tableName = paramClass.getSimpleName().toUpperCase();
+                		tableName = paramClass.getSimpleName();
                 	Field[] fields = paramClass.getDeclaredFields();
                 	for(Field f : fields){
                 		if (f.isAnnotationPresent(org.tat.api.core.meta.Column.class)) {
