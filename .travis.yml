@@ -7,6 +7,6 @@ script: mvn clean install
 
 notifications:
     email:
-	- poojagarwal.027@gmail.com
-        - karasatishkumar@gmail.com
+       - poojagarwal.027@gmail.com
+       - karasatishkumar@gmail.com
 
