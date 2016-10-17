@@ -9,11 +9,15 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import org.tat.api.core.filter.DynamicRequestJsonFilterSupport;
 import org.tat.api.core.filter.Embed;
 
+/**
+ * Set the filter support if @Embed is enabled
+ * @author satish
+ *
+ */
 public class EmbedInterceptor extends HandlerInterceptorAdapter{
 
 	@Autowired
 	private DynamicRequestJsonFilterSupport filterSupport;
-//	private ThreadLocal<Boolean> requiresReset = new ThreadLocal<Boolean>();
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -26,12 +30,10 @@ public class EmbedInterceptor extends HandlerInterceptorAdapter{
 					String filterParamValue = request.getParameter(param);
 					if (filterParamValue != null) {
 						filterSupport.setFilterFields(filterParamValue.split(","));
-//						requiresReset.set(true);
 					}
 				}
 			}
 		}
-//		requiresReset.remove();
 		return true;
 	}
 

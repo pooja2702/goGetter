@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.tat.api.core.exceptions.InvalidFieldNameException;
-import org.tat.api.core.exceptions.InvalidSearchInputException;
+import org.tat.api.core.exceptions.InvalidSearchQueryException;
 /**
  * Represents a query
  *
@@ -42,12 +42,12 @@ public class QueryImpl implements Query{
 	 * @param searchRequest input for the where clause
 	 * @param entityFieldMap map of database fields metadata
 	 * @param baseQuery base query 
-	 * @throws InvalidSearchInputException
+	 * @throws InvalidSearchQueryException
 	 * @throws InvalidFieldNameException
 	 */
 	public void formQueryObject(int offset, int limit, String sorts,
 			boolean all, Map<String, String> searchRequest,
-			Map<String, Field> entityFieldMap,String baseQuery) throws InvalidSearchInputException, InvalidFieldNameException {
+			Map<String, Field> entityFieldMap,String baseQuery) throws InvalidSearchQueryException, InvalidFieldNameException {
 		
 		//Form sort criteria
 		baseQuery = baseQuery.replace("{sort.criteria}", formSortCriteria(sorts, entityFieldMap));
@@ -139,9 +139,9 @@ public class QueryImpl implements Query{
 	 * @param query base query
 	 * @return string which replaces filter criteria in base query
 	 * @throws InvalidFieldNameException
-	 * @throws InvalidSearchInputException
+	 * @throws InvalidSearchQueryException
 	 */
-	private String formSearchCriteria(Map<String,String> searchRequest,Map<String,Field> entityFieldMap,String query) throws InvalidFieldNameException, InvalidSearchInputException{
+	private String formSearchCriteria(Map<String,String> searchRequest,Map<String,Field> entityFieldMap,String query) throws InvalidFieldNameException, InvalidSearchQueryException{
 		if(searchRequest!=null && searchRequest.size()>0){
 			for(String key : searchRequest.keySet()){
 				if(entityFieldMap.containsKey(key)){

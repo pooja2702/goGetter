@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-import org.tat.api.core.exceptions.InvalidSearchInputException;
+import org.tat.api.core.exceptions.InvalidSearchQueryException;
 /**
  * Represents a search criteria
  *
@@ -115,13 +115,13 @@ public class Search extends Criteria {
 				.concat(Operator.TILD.name()), NUM_BETWEEN_PATTERN);
 	}
 
-	public Search(String fieldName, String input, Field field) throws InvalidSearchInputException {
+	public Search(String fieldName, String input, Field field) throws InvalidSearchQueryException {
 		super(field);
 		this.fieldName = fieldName;
 		this.input = input;
 
 		if (!this.validateInput()) {
-			throw new InvalidSearchInputException(input);
+			throw new InvalidSearchQueryException(input);
 		} else {
 			identifyAndExtractValues();
 			castParams();

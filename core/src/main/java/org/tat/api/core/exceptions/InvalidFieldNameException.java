@@ -1,5 +1,10 @@
 package org.tat.api.core.exceptions;
 
+/**
+ * In case of invalid field name
+ * @author satish
+ *
+ */
 public class InvalidFieldNameException extends Exception{
 
 	private static final long serialVersionUID = 1L;

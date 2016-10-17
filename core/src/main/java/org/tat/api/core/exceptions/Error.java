@@ -7,6 +7,15 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+/**
+ * This class is reposible for wrapping the technical error to a user define
+ * exception with HTTP code. This class can be used efficiently in code to
+ * transform the technical error to user defined error with a relevant HTTP
+ * response code.
+ * 
+ * @author satish
+ *
+ */
 @JsonAutoDetect
 @JsonInclude(Include.NON_NULL)
 public class Error {
@@ -37,5 +46,4 @@ public class Error {
 		this.status = status;
 	}
 
-	
 }

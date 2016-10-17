@@ -11,7 +11,7 @@ import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.tat.api.core.exceptions.InvalidFieldNameException;
-import org.tat.api.core.exceptions.InvalidSearchInputException;
+import org.tat.api.core.exceptions.InvalidSearchQueryException;
 import org.tat.api.core.exceptions.Error;
 
 public class CentralExceptionHandler {
@@ -60,9 +60,9 @@ public class CentralExceptionHandler {
 		return new ResponseEntity<List<Error>>(errors, HttpStatus.BAD_REQUEST);
 	}
 
-	@ExceptionHandler({ InvalidSearchInputException.class })
+	@ExceptionHandler({ InvalidSearchQueryException.class })
 	public ResponseEntity<List<Error>> handleValidationException(
-			InvalidSearchInputException e) {
+			InvalidSearchQueryException e) {
 		e.printStackTrace();
 
 		List<Error> errors = new ArrayList<Error>();
