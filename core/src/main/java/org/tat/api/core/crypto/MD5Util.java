@@ -9,9 +9,25 @@ import java.security.NoSuchAlgorithmException;
 import org.apache.log4j.Logger;
 import org.springframework.util.SerializationUtils;
 
+/**
+ * Utility Class
+ * 
+ * @author satish
+ *
+ */
 public class MD5Util {
 	private static final Logger logger = Logger.getLogger(MD5Util.class);
 
+	/**
+	 * This method responsible to generate the unique hash value for a object.
+	 * This will be useful while comparing to pojo object for any change. This
+	 * can be used in case of concurrent update scenario.
+	 * 
+	 * @param object
+	 *            - Serializable Object
+	 * @return - Hash value using MD5 Digest
+	 * @throws NoSuchAlgorithmException
+	 */
 	public static String hash(Object object) throws NoSuchAlgorithmException {
 		MessageDigest md = MessageDigest.getInstance("MD5");
 
@@ -33,6 +49,14 @@ public class MD5Util {
 		return hexString.toString();
 	}
 
+	/**
+	 * This method is to generate the hash value depending on a string value.
+	 * 
+	 * @param string
+	 *            - input string
+	 * @return - Hash value using MD5 Digest
+	 * @throws NoSuchAlgorithmException
+	 */
 	public static String hash(String string) throws NoSuchAlgorithmException {
 
 		MessageDigest md = MessageDigest.getInstance("MD5");
@@ -53,8 +77,16 @@ public class MD5Util {
 		return hexString.toString();
 	}
 
-	public static String checksum(File file) throws NoSuchAlgorithmException,
-			IOException {
+	/**
+	 * Generate the checksum value depending on the file content
+	 * 
+	 * @param file
+	 *            - File Object
+	 * @return - Checksum value depending on the file content.
+	 * @throws NoSuchAlgorithmException
+	 * @throws IOException
+	 */
+	public static String checksum(File file) throws NoSuchAlgorithmException, IOException {
 		MessageDigest md = MessageDigest.getInstance("MD5");
 		FileInputStream fis = new FileInputStream(file);
 
@@ -78,22 +110,5 @@ public class MD5Util {
 		if (logger.isDebugEnabled())
 			logger.debug("Digest(in hex format):: " + hexString.toString());
 		return hexString.toString();
-	}
-
-	public static void main(String[] args) {
-		try {
-			// hash with string
-			hash("satish");
-
-			// hash with object
-			Error error = new Error("400-102:I am a fool");
-			hash(error);
-
-			// checksum for a file
-			File file = new File(
-					"C:\\NotBackedUp\\workspaceRest\\rest-api-sample\\core\\src\\main\\java\\org\\tat\\api\\core\\exceptions\\InvalidFieldNameException.java");
-			checksum(file);
-		} catch (Exception e) {
-		}
 	}
 }
