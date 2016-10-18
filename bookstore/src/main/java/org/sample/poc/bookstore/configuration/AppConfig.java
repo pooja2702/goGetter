@@ -6,12 +6,14 @@ import org.sample.poc.bookstore.mapper.EntityResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.tat.api.core.configuration.CoreConfig;
 import org.tat.api.core.filter.DynamicRequestJsonFilterSupport;
 import org.tat.api.core.interceptor.EmbedInterceptor;
 
@@ -20,7 +22,8 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan({"org.sample.poc.bookstore","org.tat.api.core.interceptor","org.sample.poc.bookstore.repos","org.tat.api.core.processors"})
+@Import(CoreConfig.class)
+@ComponentScan({"org.sample.poc.bookstore","org.sample.poc.bookstore.repos"})
 public class AppConfig extends WebMvcConfigurerAdapter{
 
 	@Override
