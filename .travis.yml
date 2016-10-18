@@ -9,4 +9,5 @@ notifications:
     email:
        - poojagarwal.027@gmail.com
        - karasatishkumar@gmail.com
-
+    on_success: always
+    on_failure: always
