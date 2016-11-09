@@ -11,3 +11,17 @@ notifications:
        - karasatishkumar@gmail.com
     on_success: always
     on_failure: always
+    
+before_deploy: "echo 'ready?'"    
+    
+deploy:
+      provider: codedeploy
+      access_key_id: AKIAJGAH6OGGLUCHOOSA
+      secret_access_key: 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
+      bucket: "S3 Bucket"
+      key: target/bookstore.war
+      application: bookstore
+      deployment_group: RESTAPIDeploymentGroup    
+      wait-until-deployed: true
+
+after_deploy: "echo 'finished..'"  
